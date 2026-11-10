@@ -1,0 +1,154 @@
+:root {
+  color-scheme: dark;
+  --background: #101624;
+  --surface: #1b2537;
+  --surface-hover: #25344b;
+  --radius: .625rem;
+  --space: 1rem;
+  --gap: 1.25rem;
+  --text: #eef2fa;
+  --muted: #b7c5da;
+  --accent: #a9caff;
+  --edge: #74849e;
+}
+:root[data-theme="light"] {
+  color-scheme: light;
+  --background: #f4f7fc;
+  --surface: #fff;
+  --surface-hover: #e5edf9;
+  --text: #182338;
+  --muted: #465674;
+  --accent: #174d92;
+  --edge: #687991;
+}
+* { box-sizing: border-box; }
+[hidden] { display: none !important; }
+body {
+  margin: 0;
+  background: var(--background);
+  color: var(--text);
+  font: 1rem/1.6 system-ui, sans-serif;
+}
+.shell { width: min(100% - 2rem, 72rem); margin-inline: auto; }
+.site-header {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space);
+  padding-block: var(--space);
+  border-bottom: 1px solid var(--edge);
+}
+.brand {
+  display: inline-flex;
+  align-items: center;
+  gap: .55rem;
+  padding: .45rem .65rem;
+  border-radius: var(--radius);
+  color: var(--text);
+  font-weight: 700;
+  text-decoration: none;
+}
+.brand:hover { background: var(--surface-hover); }
+.brand .icon { color: var(--accent); }
+main { padding-block: clamp(1.5rem, 5vw, 3rem) 4rem; }
+h1, h2 { line-height: 1.2; overflow-wrap: anywhere; }
+h1 {
+  margin: 0 0 .65rem;
+  font-size: clamp(1.9rem, 5vw, 2.75rem);
+  letter-spacing: -.025em;
+}
+.intro { margin: 0 0 var(--gap); max-width: 60ch; }
+a { color: var(--accent); text-underline-offset: .2em; }
+:focus-visible { outline: 3px solid var(--accent); outline-offset: 4px; }
+.button, select {
+  display: inline-block;
+  border: 1px solid var(--edge);
+  border-radius: var(--radius);
+  padding: .55rem .85rem;
+  color: var(--text);
+  background: var(--surface);
+  font: inherit;
+}
+.button { cursor: pointer; }
+a.button { text-decoration: none; }
+.button:hover { background: var(--surface-hover); }
+.download-button {
+  display: inline-flex;
+  align-items: center;
+  gap: .5rem;
+}
+.download-button:hover, .download-button:focus-visible {
+  border-color: var(--accent);
+  background: var(--surface-hover);
+}
+.icon {
+  width: 1.1em;
+  height: 1.1em;
+  flex: none;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.75;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+.intro { color: var(--muted); }
+.category {
+  display: inline-block;
+  margin: 0;
+  padding: .15rem .55rem;
+  border-radius: var(--radius);
+  background: var(--surface-hover);
+  color: var(--muted);
+  font-size: .85rem;
+}
+select { max-width: 100%; }
+.catalog, .downloads { list-style: none; padding: 0; }
+.catalog {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 16.25rem), 18.75rem));
+  gap: var(--gap);
+}
+.card {
+  width: 100%;
+  padding: var(--space);
+  background: var(--surface);
+  border: 1px solid var(--edge);
+  border-radius: var(--radius);
+  overflow-wrap: anywhere;
+}
+.card-link {
+  display: block;
+  border-radius: var(--radius);
+  color: var(--text);
+  text-decoration: none;
+}
+.card-link:hover h2 { color: var(--accent); text-decoration: underline; }
+.card h2 { margin: .85rem 0 .6rem; font-size: 1.2rem; }
+.cover {
+  display: block;
+  max-width: 100%;
+  height: auto;
+  border-radius: var(--radius);
+}
+.card .cover { margin-inline: auto; max-height: 22rem; object-fit: contain; }
+.detail {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 2fr);
+  gap: clamp(1.5rem, 5vw, 4rem);
+  margin-top: 1.5rem;
+}
+.detail-nav {
+  text-align: center;
+  margin-top: clamp(1.5rem, 4vw, 3rem);
+  padding-top: var(--space);
+  border-top: 1px solid color-mix(in srgb, var(--accent) 35%, transparent);
+}
+.detail h1 { font-size: clamp(1.5rem, 3vw, 2rem); }
+.detail h2 { margin-top: 1.5rem; font-size: 1.125rem; }
+.detail p:not(.category) { max-width: 65ch; }
+.downloads { display: flex; flex-wrap: wrap; gap: .65rem; }
+@media (max-width: 42rem) {
+  .detail { grid-template-columns: minmax(0, 1fr); }
+  .detail .cover { max-height: 24rem; object-fit: contain; }
+}
